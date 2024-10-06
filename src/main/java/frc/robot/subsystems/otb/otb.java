@@ -1,4 +1,4 @@
-package frc.robot.subsystems.pivot;
+package frc.robot.subsystems.otb;
 import com.ctre.phoenix6.BaseStatusSignal;
 import com.ctre.phoenix6.StatusSignal;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
@@ -13,7 +13,7 @@ import com.ctre.phoenix6.signals.NeutralModeValue;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-public class pivot extends SubsystemBase{
+public class otb extends SubsystemBase{
     private final TalonFX pivotmotor = new TalonFX(12, "canivore");
     private MotionMagicVoltage motionmagicrequest = new MotionMagicVoltage(0).withEnableFOC(true);
     private TalonFXConfiguration pivotconfigs = new TalonFXConfiguration();
@@ -24,7 +24,7 @@ public class pivot extends SubsystemBase{
     private double setpointvolts = 0.0;
     private double setpointvolts2 = 0.0;
     private VoltageOut voltageRequest = new VoltageOut(0).withEnableFOC(true);
-    public pivot(){
+    public otb(){
         pivotconfigs.CurrentLimits.StatorCurrentLimit = 70; 
         pivotconfigs.CurrentLimits.StatorCurrentLimitEnable = true;
         pivotconfigs.MotorOutput.NeutralMode = NeutralModeValue.Brake;

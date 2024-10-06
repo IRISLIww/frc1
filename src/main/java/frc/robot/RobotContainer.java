@@ -12,9 +12,12 @@ public class RobotContainer {
     configureBindings();
   }
 
-  private void configureBindings() {}
+  private void configureBindings() {
+  }
 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
+    controller.a().whileTrue(new RunCommand(() -> otb.setvoltage(3)));
+
   }
 }
