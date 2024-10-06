@@ -18,6 +18,7 @@ public class otb extends SubsystemBase{
     private MotionMagicVoltage motionmagicrequest = new MotionMagicVoltage(0).withEnableFOC(true);
     private TalonFXConfiguration pivotconfigs = new TalonFXConfiguration();
     private final TalonFX intakemotor = new TalonFX(11, "canivore");
+    private TalonFXConfiguration intakeconfigs = new TalonFXConfiguration();
     private final StatusSignal<Double> current = pivotmotor.getStatorCurrent();
     private final StatusSignal<Double> temp = pivotmotor.getDeviceTemp();
     private final StatusSignal<Double> RPS = pivotmotor.getRotorVelocity();
@@ -39,6 +40,10 @@ public class otb extends SubsystemBase{
         pivotconfigs.Slot0.kG = 0.0662;
         pivotconfigs.Slot0.GravityType = GravityTypeValue.Arm_Cosine; 
         pivotmotor.getConfigurator().apply(pivotconfigs);
+        intakeconfigs.CurrentLimits.StatorCurrentLimit = 70;
+        intakeconfigs.CurrentLimits.StatorCurrentLimitEnable = true;
+        intakeconfigs.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
+        intakemotor.getConfigurator().apply(intakeconfigs);
     }
     public void setMotionMagic(double degrees){
         double rotations = degrees/360.;
@@ -51,6 +56,10 @@ public class otb extends SubsystemBase{
     public void runintake(double voltage){
         setpointvolts2 = voltage;
         intakemotor.setControl(voltageRequest.withOutput(voltage));
+    }
+    public void runboth(double degrees,double voltage){
+        runintake(voltage);
+        setMotionMagic(degrees);
     }
     @Override
     public void periodic(){

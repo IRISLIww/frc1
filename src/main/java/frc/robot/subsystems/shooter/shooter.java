@@ -72,6 +72,9 @@ public class shooter extends SubsystemBase{
         shooterconfigs2.Slot0.kI = 0.0;
         shooterconfigs2.Slot0.kP = 0.0;
         shooterconfigs2.Slot0.kS = 0.0;
+        shooterconfigs.CurrentLimits.StatorCurrentLimit = 70;
+        shooterconfigs.CurrentLimits.StatorCurrentLimitEnable = true;
+        shooterconfigs.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
         shootermotor2.getConfigurator().apply(shooterconfigs2);
     }
     public void setVolts(double voltage){

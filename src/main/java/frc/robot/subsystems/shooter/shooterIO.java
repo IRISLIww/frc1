@@ -1,9 +1,9 @@
 package frc.robot.subsystems.shooter;
 
-import org.littletonrobotics.junction.AutoLog;
+//import org.littletonrobotics.junction.AutoLog;
 
 public interface shooterIO {
-    @AutoLog
+   // @AutoLog
     public static class ShooterIOInputs {
         public double shooterAppliedVolts = 0.0;
         public double[] shooterSetpointsRPS = new double[] {};

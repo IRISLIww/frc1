@@ -54,5 +54,6 @@ public class indexer extends SubsystemBase{
         SmartDashboard.putNumber("current 2", current2.getValue());
         SmartDashboard.putNumber("RPS 2", RPS2.getValue());
         SmartDashboard.putNumber("setpointvolts", setpointvolts);
+        SmartDashboard.putNumber("setpointvolts2", setpointvolts2);
     }
 }
